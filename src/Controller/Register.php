@@ -20,6 +20,13 @@ class Register {
   
               throw new \Exception("User alredy exists");
         }
+        $passwoedHash= passwoRd_hash($userData['passwoed'], PASSWORD_BCRYPT);
+
+        $user =[
+                'firstname'=>$userData['firstname']
+
+
+        ]
     
   }
 
