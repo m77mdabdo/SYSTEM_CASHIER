@@ -6,16 +6,16 @@
     start_loader()
   </script>
   <style>
-    /* body{
-      background-image: url("<?php // echo validate_image($_settings->info('cover')) ?>");
+    body{
+      background-image: url("uploads/3.jpg");
       background-size:cover;
       background-repeat:no-repeat;
       backdrop-filter: contrast(1);
-    } */
+    }
     #page-title{
       text-shadow: 6px 4px 7px black;
       font-size: 3.5em;
-      color: #fff4f4 !important;
+      color:rgb(243, 236, 236) !important;
       background: #8080801c;
     }
   </style>
@@ -24,7 +24,7 @@
   <div class="card card-warning my-2">
     <div class="card-body">
       <p class="login-box-msg">Please enter your credentials</p>
-      <form id="" action="<?php echo base_url; ?>login/login" method="post">
+      <form id="" action="<?php echo base_url; ?>login/handelLogin" method="post">
         <div class="input-group mb-3">
           <input type="text" class="form-control" name="username" autofocus placeholder="Username">
           <div class="input-group-append">
