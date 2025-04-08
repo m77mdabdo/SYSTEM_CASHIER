@@ -1,0 +1,94 @@
+<style>
+	.menu-img {
+		width: 3em;
+		height: 3em;
+		object-fit: cover;
+		object-position: center center;
+	}
+</style>
+<?php require_once('inc/header.php') ?>
+
+<body class="sidebar-mini layout-fixed control-sidebar-slide-open layout-navbar-fixed sidebar-mini-md sidebar-mini-xs text-sm" data-new-gr-c-s-check-loaded="14.991.0" data-gr-ext-installed="" style="height: auto;">
+	<div class="wrapper">
+		<?php require_once('inc/navigation.php') ?>
+
+		<div class="container-fluid">
+			<form action="" id="menu-form">
+				<div class="form-group">
+					<label for="name" class="control-label">Name</label>
+					<input type="text" name="name" id="name" class="form-control form-control-sm rounded-0" value="<?php echo isset($data['menu']->name) ? $data['menu']->name : ''; ?>" required />
+				</div>
+				<div class="form-group">
+					<label for="description" class="control-label">Description</label>
+					<textarea rows="3" name="description" id="description" class="form-control form-control-sm rounded-0" required><?php echo isset($data['menu']->description) ? $data['menu']->description : ''; ?></textarea>
+				</div>
+				<div class="form-group">
+					<label for="category_id" class="control-label">Category ID</label>
+					<input type="text" name="category_id" id="category_id" class="form-control form-control-sm rounded-0" value="<?php echo isset($data['menu']->category_id) ? $data['menu']->category_id : ''; ?>" required />
+				</div>
+				<div class="form-group">
+					<label for="code" class="control-label">Code</label>
+					<input type="text" name="code" id="code" class="form-control form-control-sm rounded-0" value="<?php echo isset($data['menu']->code) ? $data['menu']->code : ''; ?>" required />
+				</div>
+				<div class="form-group">
+					<label for="price" class="control-label">Price</label>
+					<input type="number" name="price" id="price" class="form-control form-control-sm rounded-0" value="<?php echo isset($data['menu']->price) ? $data['menu']->price : ''; ?>" required />
+				</div>
+				<div class="form-group">
+					<label for="status" class="control-label">Status</label>
+					<select name="status" id="status" class="form-control form-control-sm rounded-0" required="required">
+						<option value="1" <?= isset($data['menu']->status) && $data['menu']->status == 1 ? 'selected' : '' ?>>Active</option>
+						<option value="0" <?= isset($data['menu']->status) && $data['menu']->status == 0 ? 'selected' : '' ?>>Inactive</option>
+					</select>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script>
+		var menu_id = <?= $data['menu']->id; ?>;
+		$(document).ready(function() {
+			$('#menu-form').submit(function(e) {
+				e.preventDefault();
+				var _this = $(this);
+				$('.err-msg').remove();
+				start_loader();
+				$.ajax({
+					url: _base_url_ + `menu/updateMenu/${menu_id}`,
+					data: new FormData($(this)[0]),
+					cache: false,
+					contentType: false,
+					processData: false,
+					method: 'POST',
+					type: 'POST',
+					dataType: 'json',
+					error: err => {
+						console.log(err);
+						alert_toast("An error occurred", 'error');
+						end_loader();
+					},
+					success: function(resp) {
+						if (typeof resp == 'object' && resp.status == 'success') {
+							alert_toast(resp.msg, 'success');
+							location.reload();
+						} else if (resp.status == 'failed' && !!resp.msg) {
+							var el = $('<div>');
+							el.addClass("alert alert-danger err-msg").text(resp.msg);
+							_this.prepend(el);
+							el.show('slow');
+							$("html, body").scrollTop(0);
+							end_loader();
+						} else {
+							alert_toast("An error occurred", 'error');
+							end_loader();
+							console.log(resp);
+						}
+					}
+				})
+			});
+		});
+	</script>
+
+	<?php require_once('inc/footer.php') ?>
+</body>
+
+</html>

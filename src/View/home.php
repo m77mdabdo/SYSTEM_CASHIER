@@ -26,11 +26,11 @@
                             <div class="info-box">
                                 <span class="info-box-icon bg-gradient-light elevation-1"><i class="fas fa-th-list"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text">Categories</span>
+                                    <span class="info-box-text">Categories</span> 
                                     <span class="info-box-number text-right h5">
                                         <?php
                                         // $category = $conn->query("SELECT * FROM category_list where delete_flag = 0 and `status` = 1")->num_rows;
-                                        // echo format_num($category);
+                                        // echo ($category);
                                         ?>
                                         <?php ?>
                                     </span>

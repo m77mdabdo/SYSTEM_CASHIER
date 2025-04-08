@@ -29,7 +29,7 @@
                 <nav class="mt-1">
                    <ul class="nav nav-pills nav-sidebar flex-column text-sm nav-compact nav-flat nav-child-indent nav-collapse-hide-child" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item dropdown">
-                      <a href="./" class="nav-link nav-home">
+                      <a href="./index.php/home/indxe" class="nav-link nav-home">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                           Dashboard
@@ -53,7 +53,7 @@
                       </a>
                     </li> 
                     <li class="nav-item dropdown">
-                      <a href="./?page=kitchen" class="nav-link nav-kitchen">
+                      <a href="./index.php?Kitchen/index" class="nav-link nav-kitchen">
                         <i class="nav-icon fas fa-table"></i>
                         <p>
                           Kitchen Side
@@ -62,7 +62,7 @@
                     </li>
                     <li class="nav-header">Master List</li>
                     <li class="nav-item dropdown">
-                      <a href="./index.php?category/allCategories" class="nav-link nav-categories">
+                      <a href="./index.php?category/getCategory" class="nav-link nav-categories">
                         <i class="nav-icon fas fa-th-list"></i>
                         <p>
                           Category List
@@ -70,7 +70,7 @@
                       </a>
                     </li> 
                     <li class="nav-item dropdown">
-                      <a href="./?page=menus" class="nav-link nav-menus">
+                      <a href="./index.php?menu/getMenu" class="nav-link nav-menus">
                         <i class="nav-icon fas fa-hamburger"></i>
                         <p>
                           Menu List
@@ -78,7 +78,7 @@
                       </a>
                     </li> 
                     <li class="nav-item">
-                      <a href="#" class="nav-link">
+                      <a href="" class="nav-link">
                         <i class="nav-icon fas fa-file-alt"></i>
                         <p>
                           Reports
@@ -96,7 +96,7 @@
                     </li>
                     <li class="nav-header">Maintenance</li>
                     <li class="nav-item dropdown">
-                      <a href="admin/?page=user/list" class="nav-link nav-user_list">
+                      <a href="./index.php?user/getUserList" class="nav-link nav-user_list">
                         <i class="nav-icon fas fa-users-cog"></i>
                         <p>
                           User List

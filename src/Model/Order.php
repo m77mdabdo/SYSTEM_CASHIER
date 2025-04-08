@@ -80,7 +80,7 @@ class Order extends Model {
         }
     }
 
-    private function rollback($orderid) {
+    public function rollback($orderid) {
         $query = "DELETE FROM $this->tableName WHERE id = $orderid";
         $this->query($query);
         return $this->execute();
@@ -134,6 +134,26 @@ class Order extends Model {
 
     private function extractQueue($code) {
         return substr($code, 5);
+    }
+
+    public function getOrders(){
+        $query = "SELECT * FROM $this->tableName order by date_created desc" ;
+        $this->query($query) ;
+        return $this->resultSet();
+    }
+    public function getOrderList($id){
+        $query = "SELECT * FROM $this->tableName where id = $id" ;
+        $this->query($query) ;
+        return $this->single();
+    }
+    public function getOrderItem($id){
+        $query = "SELECT oi.*, CONCAT(ml.code, '-', ml.name) AS item 
+        FROM order_items oi 
+        JOIN menu_list ml ON ml.id = oi.menu_id 
+        WHERE oi.order_id = :id";
+        $this->query($query);
+       $this->bind(':id', $id); // SQL Injection
+       return $this->single();
     }
 }
 
